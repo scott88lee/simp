@@ -1,0 +1,25 @@
+{
+  "name": "simp",
+  "version": "1.0.0",
+  "description": "Yup...",
+  "main": "./server/index.js",
+  "scripts": {
+    "dev": "concurrently \"nodemon\" \"npm --prefix ./client/ run serve\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scott88lee/simp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scott88lee/simp/issues"
+  },
+  "homepage": "https://github.com/scott88lee/simp#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  }
+}
