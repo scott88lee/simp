@@ -1,8 +1,8 @@
+const validate = require('../util/validators');
 const Users = require('../models/users');
+const mailer = require('../util/mailer');
 const bcrypt = require('bcrypt');
 // const jwt = require('jsonwebtoken')
-const validate = require('../util/validators');
-// const mailer = require('../helpers/mailer');
 // const auth = require('../helpers/auth');
 
 const createNew = async (req, res) => {
@@ -27,7 +27,7 @@ const createNew = async (req, res) => {
         // Create user
         await Users.createUser(req.body);
         // Send email
-        await mailer.sendEmail(req.body.email);
+        await mailer.sendWelcome(req.body.email);
 
         // Send JWT
         const payload = {
