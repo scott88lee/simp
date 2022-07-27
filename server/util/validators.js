@@ -1,5 +1,5 @@
 module.exports.createNewUser = function(input) {
-    if (password.length < 8) {
+    if (input.password.length < 8) {
         return {Message: 'Password must be at least 8 characters long' }
     }
     let email_regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
