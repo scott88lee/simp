@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS users (
     first_name VARCHAR(64) NOT NULL,
     last_name VARCHAR(64) NOT NULL,
     email VARCHAR(256) NOT NULL,
-    verified_email BOOLEAN,
+    verified_email BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
