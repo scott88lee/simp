@@ -3,25 +3,12 @@
 
 <head>
     <title>Sign Up</title>
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/login.css">
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-    <link rel="stylesheet" type="text/css" href="css/profile.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/signup.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/profile.js"></script>
-    <script src="js/home.js"></script>
 </head>
 
 <body>
     <div class="navbar">
         <div class="logo">
-            <a href="home.php">
+            <a href="/">
                 <img src="images/logo.png" alt="logo" height="50px" width="50px">
             </a>
         </div>
@@ -37,10 +24,9 @@
             <h1>Sign Up</h1>
         </div>
         <div class="signup-form">
-            <form action="signup.php" method="post">
+            <form action="/users/new" method="post">
                 <div class="signup-form-input">
                     <input type="text" name="username" placeholder="Username" required>
-
                 </div>
                 <div class="signup-form-input">
                     <input type="text" name="email" placeholder="Email" required>
@@ -51,7 +37,6 @@
                 <div class="signup-form-input">
                     <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                 </div>
-
                 <div class="signup-form-input">
                     <input type="submit" name="signup" value="Sign Up">
                 </div>

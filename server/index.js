@@ -1,28 +1,21 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const db = require('./db');
 const app = express();
 
-app.use(express.static('public'));
+//REDUNDANT CODE
+const cors = require('cors');
+const db = require('./db');
+// app.use(cors());
+//REDUNTANT CODE
 
+// Middleware
+app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors());rs
 
-app.get('/', (req, res) => {
-    db.query('SELECT * FROM users', (err, result) => {
-        if (err) {
-            console.log("err");
-            res.status(500).send(err);
-        } else {
-            res.status(200).send(result.rows);
-        }
-    });
-});
-
-const users = require('./controllers/users');
-app.get('/users', users.kahuna);
+// Routes
+app.get('/', (req, res) => {res.send('Hello World!');});
+app.use('/api/users', require('./routes/users'));
 
 // 404 Not Found
 const controller = require('./controllers/index');
