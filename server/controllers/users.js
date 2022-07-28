@@ -1,12 +1,11 @@
 const validate = require('../util/validators');
 const Users = require('../models/users');
 const mailer = require('../util/mailer');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 // const auth = require('../helpers/auth');
 
 const createNew = async (req, res) => {
-
     // Validate input data
     let inputErrors = validate.createNewUser(req.body);
     if (inputErrors) {
@@ -35,7 +34,7 @@ const createNew = async (req, res) => {
         };
 
         const secret = process.env['JWT_SECRET']
-        const signedToken = jwt.sign(payload, secret, { expiresIn: 172800, algorithm: 'HS256' });
+        const signedToken = jwt.sign(payload, secret, { expiresIn: 172800 });
         res.json({
             id: user_id,
             token: "Bearer " + signedToken,
@@ -46,31 +45,29 @@ const createNew = async (req, res) => {
     }
 }
 
-// Difficulty is code is poorly written and organized, its hard to make zone specific changes without breaking.
-// It a matter of coming to terms and to change that or just hire more and more low level devs to churn out features.
-// If not, then dev and process is slow and will continue to slow, or has to augmented with more indian devs
 
+//Get user
+const currentUser = async (req, res) => {
+    res.send("Hello world!");
+}
+    // try {
+    //     let user = await Users.findUserById(req.params.id);
+    //     //console.log(user)
 
-// //Get user
-// const getUser = async (req, res) => { //Modified to POST
-//     try {
-//         let user = await Users.findUserById(req.params.id);
-//         //console.log(user)
+    //     // Send ambiguous response to prevent Username brute forcing
+    //     if (user && user.email === req.body.email) {
+    //         // let verified = await auth.validPassword(req.body.password, user.pwdHash)
+    //         console.log(verified)
+    //         if (verified) {
+    //             // const tokenObject = auth.issueJWT(user);
+    //             res.status(200).json({ success: true, token: tokenObject.token, expiresIn: tokenObject.expires });
+    //         }
+    //     }
+    //     res.status(401).json({ success: false, message: 'Invalid credentials' });
+    // } catch (err) {
+    //     console.log(err)
+    // }
 
-//         // Send ambiguous response to prevent Username brute forcing
-//         if (user && user.email === req.body.email) {
-//             let verified = await auth.validPassword(req.body.password, user.pwdHash)
-//             console.log(verified)
-//             if (verified) {
-//                 const tokenObject = auth.issueJWT(user);
-//                 res.status(200).json({ success: true, token: tokenObject.token, expiresIn: tokenObject.expires });
-//             }
-//         }
-//         res.status(401).json({ success: false, message: 'Invalid credentials' });
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
 
 // const updateUser = async (req, res) => {
 //     try {
@@ -134,4 +131,5 @@ const createNew = async (req, res) => {
 
 module.exports = {
     createNew,
+    currentUser
 }

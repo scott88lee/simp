@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const users = require('../controllers/users');
 
+const auth = require('../util/auth');
+
 router.post('/', users.createNew);
+router.get('/current', auth.auth, users.currentUser);
 
 
 module.exports = router;
 // const { check } = require('express-validator');
-// const { auth } = require('../middleware/auth');
 
 // router.get('/', auth, users.getAllUsers);
 // router.get('/:id', auth, users.getUserById);
