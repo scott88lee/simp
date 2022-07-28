@@ -1,8 +1,8 @@
 const validate = require('../util/validators');
 const Users = require('../models/users');
 const mailer = require('../util/mailer');
+const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken')
 // const auth = require('../helpers/auth');
 
 const createNew = async (req, res) => {
@@ -15,7 +15,6 @@ const createNew = async (req, res) => {
     }
 
     let exist = await Users.findUser(req.body.email);
-    console.log(exist);
     if (exist) {
         res.status(400).json({ Success: false, Message: 'User already exist.' });
         return;
@@ -25,20 +24,20 @@ const createNew = async (req, res) => {
         // Hash password
         req.body.hash = await bcrypt.hash(req.body.password, 8);
         // Create user
-        await Users.createUser(req.body);
+        let user_id = await Users.createUser(req.body);
         // Send email
         await mailer.sendWelcome(req.body.email);
 
         // Send JWT
         const payload = {
-            sub: user.insertedId,
+            sub: user_id,
             iat: Date.now()
         };
 
         const secret = process.env['JWT_SECRET']
         const signedToken = jwt.sign(payload, secret, { expiresIn: 172800, algorithm: 'HS256' });
         res.json({
-            id: user.insertedId,
+            id: user_id,
             token: "Bearer " + signedToken,
             expires: 172800
         })
@@ -46,6 +45,11 @@ const createNew = async (req, res) => {
         console.log(err)
     }
 }
+
+// Difficulty is code is poorly written and organized, its hard to make zone specific changes without breaking.
+// It a matter of coming to terms and to change that or just hire more and more low level devs to churn out features.
+// If not, then dev and process is slow and will continue to slow, or has to augmented with more indian devs
+
 
 // //Get user
 // const getUser = async (req, res) => { //Modified to POST

@@ -1,8 +1,8 @@
-require('dotenv').config()
+// require('dotenv').config()
 const nodemailer = require("nodemailer");
 
 // create reusable transporter object using the default SMTP transport
-let transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     service: 'Gmail', // no need to set host or port etc.
     auth: {
         user: process.env['GMAIL_USER'],
