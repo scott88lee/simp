@@ -34,10 +34,13 @@ CREATE TABLE IF NOT EXISTS roles (
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+
 CREATE TABLE IF NOT EXISTS resources (
     resource_id SERIAL PRIMARY KEY,
     resource_name TEXT NOT NULL,
     resource_description TEXT NOT NULL,
+    private_resource BOOLEAN NOT NULL DEFAULT FALSE,
+    restricted_resource BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
