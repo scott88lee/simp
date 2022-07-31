@@ -51,4 +51,6 @@ app.options("*", controller.notFound);
 
 // Start server
 const PORT = process.env.HTTP_PORT || 5000;
-app.listen(PORT, () => { console.log(`HTTP listening port: ${PORT}`); });
+app.listen(PORT, () => { 
+    console.log(`HTTP listening port: ${PORT}`); 
+});
