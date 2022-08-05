@@ -45,6 +45,11 @@ const createNew = async (req, res) => {
     }
 }
 
+const test = async (req, res) => {
+    let mailer = require('../util/mailer');
+    await mailer.sendVerify('scott88lee@gmail.com')
+    res.send("Hello world!");
+}
 
 //Get user
 const currentUser = async (req, res) => {
@@ -131,5 +136,6 @@ const currentUser = async (req, res) => {
 
 module.exports = {
     createNew,
-    currentUser
+    currentUser,
+    test
 }

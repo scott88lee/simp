@@ -51,6 +51,7 @@ module.exports = {
   },
 
   admin: async (req, res, next) => {
+    console.log("Cookie", req.cookie)
     next();
   }
 }

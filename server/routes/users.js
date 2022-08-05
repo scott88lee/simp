@@ -6,6 +6,8 @@ const auth = require('../util/auth');
 router.post('/', users.createNew);
 router.get('/current', auth.auth, users.currentUser);
 
+router.get('/test', users.test);
+
 
 module.exports = router;
 // const { check } = require('express-validator');
