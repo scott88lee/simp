@@ -39,6 +39,7 @@ app.get('/', (req, res) => { res.send('Hello World!'); });
 
 app.use('/admin', require('./routes/admin'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/test', require('./routes/typescript'));
 
 // 404 Not Found
 const controller = require('./controllers/index');
