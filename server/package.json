@@ -2,7 +2,7 @@
   "name": "simp",
   "version": "1.0.0",
   "description": "Yup...",
-  "main": "./server/index.ts",
+  "main": "./index.ts",
   "scripts": {
     "dev": "concurrently \"nodemon\" \"npm --prefix ./client/ run serve\"",
     "test": "echo \"Error: no test specified\" && exit 1"
